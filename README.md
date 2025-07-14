@@ -47,13 +47,13 @@ Este projeto final tem como objetivo integrar os conhecimentos de IA com desenvo
    - Git instalado.
 2. **Configuração do Ambiente:**
    - Clone o repositório (ou use sua pasta local):
-      - ` git clone https://github.com/seu-usuario/seu-repositorio.git
-      - ` cd seu-repositorio
+       ` git clone https://github.com/seu-usuario/seu-repositorio.git
+       ` cd seu-repositorio
    - Crie e ative um ambiente virtual:
-      - ` python -m venv venv
-      - ` .\venv\Scripts\activate
+       ` python -m venv venv
+       ` .\venv\Scripts\activate
    - Instale as dependências:
-      - ` pip install -r requirements.txt
+       ` pip install -r requirements.txt
    - Configure a Chave da API (Opcional):
       - Na pasta raiz do projeto, crie um arquivo chamado: ` .env.
       - Abra o arquivo `.env` e adicione a seguinte linha, substituindo pela sua chave real da API do Google Maps: ` GOOGLE_MAPS_API_KEY="SUA_CHAVE_DE_API_REAL_VAI_AQUI"
