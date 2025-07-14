@@ -47,23 +47,25 @@ Este projeto final tem como objetivo integrar os conhecimentos de IA com desenvo
    - Git instalado.
 2. **Configuração do Ambiente:**
    - Clone o repositório (ou use sua pasta local):
-      - git clone https://github.com/seu-usuario/seu-repositorio.git
-      - cd seu-repositorio
+      - ` git clone https://github.com/seu-usuario/seu-repositorio.git
+      - ` cd seu-repositorio
    - Crie e ative um ambiente virtual:
-      - python -m venv venv
-      - .\venv\Scripts\activate
+      - ` python -m venv venv
+      - ` .\venv\Scripts\activate
    - Instale as dependências:
-      - pip install -r requirements.txt
+      - ` pip install -r requirements.txt
    - Configure a Chave da API (Opcional):
       - Na pasta raiz do projeto, crie um arquivo chamado: ` .env.
-      - Abra o arquivo `.env` e adicione a seguinte linha, substituindo pela sua chave real da API do Google Maps: GOOGLE_MAPS_API_KEY="SUA_CHAVE_DE_API_REAL_VAI_AQUI"
+      - Abra o arquivo `.env` e adicione a seguinte linha, substituindo pela sua chave real da API do Google Maps: ` GOOGLE_MAPS_API_KEY="SUA_CHAVE_DE_API_REAL_VAI_AQUI"
       - **Observação:** O arquivo ` .env ` está listado no .gitignore, então sua chave secreta nunca será enviada para o repositório.
    - Estrutura de Dados:
       - Certifique-se de que a pasta ` C:\suapasta\STRANS-Projeto-IA\DataSets ` existe ou ajuste o caminho no arquivo app.py.
-      - Garanta que todos os arquivos .csv necessários estejam dentro desta pasta.
+      - Garanta que todos os arquivos ` .csv `  necessários estejam dentro desta pasta.
 3. **Execução:**
-   - Com o ambiente virtual ativado, execute o seguinte comando no terminal: flask run
-   - Abra o navegador e acesse o endereço: http://127.0.0.1:5000
+   - Com o ambiente virtual ativado, execute o seguinte comando no terminal:
+     ` flask run
+   - Abra o navegador e acesse o endereço:
+     ` http://127.0.0.1:5000
    - Use as credenciais abaixo para fazer login:
-     - Login: admin
-     - Senha: q1w2e3r4
+     - Login: ` admin
+     - Senha: ` q1w2e3r4
