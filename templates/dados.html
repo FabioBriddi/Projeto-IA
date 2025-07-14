@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+
+{% block title %}STRANS - {{ titulo }}{% endblock %}
+
+{% block content %}
+    <div class="titulo-header">
+        <h1>{{ titulo }}</h1>
+        
+        <!-- Botão para Análise de Clientes -->
+        {% if titulo == 'Clientes' %}
+        <a href="{{ url_for('analise_clientes') }}" class="btn-analise">Análise Gráfica</a>
+        {% endif %}
+        
+        <!-- Botões para Análise de Entregas -->
+        {% if titulo == 'Entregas' %}
+        <a href="{{ url_for('analise_entregas_volumes') }}" class="btn-analise">Análise Gráfica Volumes</a>
+        <a href="{{ url_for('analise_veiculos') }}" class="btn-analise">Análise Gráfica Veículos</a>
+        {% endif %}
+
+        <a href="/" class="btn-voltar-topo">Voltar</a>
+    </div>
+
+    <div class="filtro-container">
+        <input type="text" id="filtroInput" onkeyup="filtrarTabela()" placeholder="Digite para filtrar qualquer coluna...">
+    </div>
+    
+    <div class="tabela-container">
+        <table id="tabelaDados" class="tabela-dados">
+            {{ tabela_html|safe }}
+        </table>
+    </div>
+
+    <a href="/" class="link-voltar">‹ Voltar ao Menu</a>
+
+    <script>
+        function filtrarTabela() {
+            const input = document.getElementById("filtroInput");
+            const filter = input.value.toUpperCase();
+            const tabela = document.getElementById("tabelaDados");
+            const tr = tabela.getElementsByTagName("tr");
+
+            for (let i = 1; i < tr.length; i++) {
+                let linhaVisivel = false;
+                const tds = tr[i].getElementsByTagName("td");
+                for (let j = 0; j < tds.length; j++) {
+                    const td = tds[j];
+                    if (td) {
+                        const textoCelula = td.textContent || td.innerText;
+                        if (textoCelula.toUpperCase().indexOf(filter) > -1) {
+                            linhaVisivel = true;
+                            break; 
+                        }
+                    }
+                }
+                if (linhaVisivel) {
+                    tr[i].style.display = "";
+                } else {
+                    tr[i].style.display = "none";
+                }
+            }
+        }
+    </script>
+{% endblock %}

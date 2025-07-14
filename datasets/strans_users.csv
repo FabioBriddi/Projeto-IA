@@ -1,0 +1,6 @@
+login;password;nome;perfil;api_key
+admin;b1ef741bee14a29acbe5686f59b62569;Administrador do Sistema;Administrador;false
+operador;b1ef741bee14a29acbe5686f59b62569;Operador;Operador;false
+fbriddi;42d8aa7cde9c78c4757862d84620c335;Fabio Briddi;Administrador;true
+gcasarin;97db1846570837fce6ff62a408f1c26a;Gustavo Casarin;Administrador;false
+

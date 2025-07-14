@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block title %}STRANS - Roteiro de Coleta{% endblock %}
+
+{% block content %}
+    <div class="titulo-header">
+        <h1>{{ titulo }}</h1>
+        <div class="botoes-cabecalho">
+            <!-- Só aparece se a URL do Google Maps existir -->
+            {% if google_maps_url %}
+            <a href="{{ google_maps_url }}" target="_blank" class="btn-acao-coleta btn-google-maps">Ver no Google Maps</a>
+            {% endif %}
+            <a href="{{ url_for('coletas') }}" class="btn-voltar-topo">Voltar para Coletas</a>
+        </div>
+    </div>
+    
+    {% if roteiro %}
+    <div class="tabela-container">
+        <table id="tabelaDados" class="tabela-dados">
+            <thead>
+                <tr>
+                    {% for header in headers %}
+                        <th>{{ header.replace('_', ' ') | title }}</th>
+                    {% endfor %}
+                </tr>
+            </thead>
+            <tbody>
+                {% for parada in roteiro %}
+                <tr>
+                    {% for key, value in parada.items() %}
+                        <td>{{ value }}</td>
+                    {% endfor %}
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    {% else %}
+    <div class="alerta-info">
+        <p>Nenhum roteiro foi gerado ainda.</p>
+        <p>Vá para a tela de <a href="{{ url_for('coletas') }}">Coletas</a>, selecione os pontos desejados e clique em "Gerar Roteiro Coleta".</p>
+    </div>
+    {% endif %}
+
+{% endblock %}
