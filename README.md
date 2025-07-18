@@ -235,5 +235,5 @@ Este projeto está licenciado sob a Licença MIT. Consulte o arquivo [LICENSE](L
 
 Para dúvidas, sugestões ou suporte, entre em contato com os autores:
 
-*   **Fábio Briddi:** [seu_email_fabio@exemplo.com]
+*   **Fábio Briddi:** [fbriddi@gmail.com.br]
 *   **Gustavo Casarin:** [gustavocasarinsilva@gmail.com]
