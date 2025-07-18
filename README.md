@@ -1,19 +1,4 @@
-<<<<<<< HEAD
-# Projeto-IA - UniSenac
-# Projeto Final - Inteligência Artificial
-# Desenvolvimento de Solução IA Integrada para Empresas
-
-Este projeto final tem como objetivo integrar os conhecimentos de IA com desenvolvimento prático:
-- Aplicar técnicas de IA para resolver problemas empresariais reais
-- Desenvolver interface funcional que exponha a solução
-- Integrar modelos de IA com front-end utilizável
-- Aproveitar conhecimentos de outras disciplinas do curso
-- Criar solução que agregue valor real ao negócio
-- Demonstrar viabilidade técnica e comercial da solução
-
-
-=======
-# 🚚 SisLog - Sistema de Gestão de Logística Inteligente para Transportadoras (STRANS)
+# 🚚 SisLog - Sistema de Gestão de Logística Inteligente para Transportadoras
 
 ## Visão Geral do Projeto
 
@@ -215,11 +200,18 @@ Com todas as configurações feitas e o ambiente virtual ativado, você está pr
 
     *   **Login:** `admin`
     *   **Senha:** `q1w2e3r4`
+---
+
+Essa versão está mais explicativa e didática, com todas as informações organizadas e as observações importantes destacadas. A inclusão dos caminhos para diferentes sistemas operacionais e a explicação detalhada do `.env` e da pasta `DataSets` são pontos-chave para garantir que qualquer pessoa consiga rodar o projeto sem problemas.
+
+Espero que essa versão atenda perfeitamente às suas expectativas!
+
 ## 📂 Estrutura do Projeto
 
 A seguir, uma visão geral da estrutura de pastas e arquivos principais do projeto:
 
 . ├── .vscode/ # Configurações do VS Code ├── datasets/ # Contém os arquivos de dados (.csv) para análise e treinamento ├── modules/ # Módulos Python personalizados do projeto (lógica de negócio, IA) │ └── pycache/ ├── static/ # Arquivos estáticos da aplicação web (CSS, JS, Imagens) │ ├── analise/ # Possíveis arquivos de análise estática ou relatórios │ ├── css/ # Folhas de estilo CSS │ └── images/ # Imagens utilizadas na interface ├── STRANS_Projeto_IA/ # Diretório principal da aplicação Flask (código-fonte da aplicação) ├── templates/ # Arquivos HTML para renderização das páginas web ├── venv/ # Ambiente virtual Python │ ├── Include/ │ ├── Lib/ │ └── Scripts/ ├── .env.example # Exemplo de arquivo .env para configuração de variáveis de ambiente ├── .gitignore # Arquivos e pastas a serem ignorados pelo Git ├── app.py # (ou outro arquivo principal do Flask) - Ponto de entrada da aplicação ├── requirements.txt # Lista de dependências Python do projeto └── README.md # Este arquivo
+
 
 ## 📈 Melhorias Futuras (Roadmap)
 
@@ -251,4 +243,5 @@ Para dúvidas, sugestões ou suporte, entre em contato com os autores:
 
 *   **Fábio Briddi:** [fbriddi@gmail.com.br]
 *   **Gustavo Casarin:** [gustavocasarinsilva@gmail.com]
->>>>>>> f2955cf7c4561253a512eb8302b2a7d39e7ddd99
+
+---
