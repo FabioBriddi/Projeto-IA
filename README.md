@@ -65,7 +65,6 @@ Este projeto foi construído utilizando uma stack tecnológica robusta e moderna
 *   **Backend:**
     *   **Python**: A linguagem de programação principal, escolhida por sua versatilidade, vasta gama de bibliotecas e forte comunidade, ideal para desenvolvimento web e IA.
     *   **Flask**: Um microframework web leve e flexível para Python, utilizado para construir a aplicação web, gerenciar rotas, requisições HTTP e renderização de templates.
-    *   **SQLAlchemy**: (Sugestão: Se você usa um ORM para o banco de dados, mencione-o aqui. Caso contrário, ignore ou mencione a biblioteca de conexão SQL que usa) - Para ORM e gerenciamento de banco de dados.
     *   **Python-dotenv**: Essencial para gerenciar variáveis de ambiente e chaves secretas de forma segura e prática (como a chave da API do Google Maps), garantindo que informações sensíveis não sejam expostas no código-fonte.
 *   **Análise de Dados e Machine Learning:**
     *   **Pandas**: A biblioteca padrão em Python para manipulação e análise de dados, fundamental para processar e estruturar os grandes volumes de dados operacionais da transportadora.
