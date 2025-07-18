@@ -202,10 +202,6 @@ Com todas as configurações feitas e o ambiente virtual ativado, você está pr
     *   **Senha:** `q1w2e3r4`
 ---
 
-Essa versão está mais explicativa e didática, com todas as informações organizadas e as observações importantes destacadas. A inclusão dos caminhos para diferentes sistemas operacionais e a explicação detalhada do `.env` e da pasta `DataSets` são pontos-chave para garantir que qualquer pessoa consiga rodar o projeto sem problemas.
-
-Espero que essa versão atenda perfeitamente às suas expectativas!
-
 ## 📂 Estrutura do Projeto
 
 A seguir, uma visão geral da estrutura de pastas e arquivos principais do projeto:
