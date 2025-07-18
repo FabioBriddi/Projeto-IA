@@ -1,0 +1,70 @@
+{
+  "timestamp": "2025-07-18T18:25:32.168213",
+  "api": "simulation",
+  "usuario": "fbriddi",
+  "tipo": "retorno",
+  "dados": {
+    "success": true,
+    "optimized_order": [
+      1,
+      3,
+      8,
+      5,
+      7,
+      2,
+      6,
+      0,
+      4
+    ],
+    "total_distance_meters": 15539,
+    "total_duration_seconds": 2384,
+    "legs_count": 10,
+    "optimization_applied": true
+  }
+}
+================================================================================
+{
+  "timestamp": "2025-07-18T18:50:41.104012",
+  "api": "simulation",
+  "usuario": "fbriddi",
+  "tipo": "retorno",
+  "dados": {
+    "success": true,
+    "optimized_order": [
+      8,
+      0,
+      2,
+      7,
+      9,
+      4,
+      6,
+      1,
+      5,
+      3
+    ],
+    "total_distance_meters": 18801,
+    "total_duration_seconds": 2687,
+    "legs_count": 11,
+    "optimization_applied": true
+  }
+}
+================================================================================
+{
+  "timestamp": "2025-07-18T19:57:58.385822",
+  "api": "simulation",
+  "usuario": "fbriddi",
+  "tipo": "retorno",
+  "dados": {
+    "success": true,
+    "optimized_order": [
+      1,
+      2,
+      0
+    ],
+    "total_distance_meters": 6795,
+    "total_duration_seconds": 978,
+    "legs_count": 4,
+    "optimization_applied": true
+  }
+}
+================================================================================

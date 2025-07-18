@@ -1,0 +1,40 @@
+{
+  "timestamp": "2025-07-18T19:57:57.247701",
+  "api": "routes",
+  "usuario": "fbriddi",
+  "tipo": "envio",
+  "dados": {
+    "url": "https://routes.googleapis.com/directions/v2:computeRoutes",
+    "headers": {
+      "Content-Type": "application/json",
+      "X-Goog-FieldMask": "routes.duration,routes.distanceMeters,routes.optimizedIntermediateWaypointIndex,routes.legs.duration,routes.legs.distanceMeters"
+    },
+    "payload": {
+      "origin": {
+        "address": "Av. Plínio Kroeff, 1550 - Sarandi, Porto Alegre - RS, 91150-170"
+      },
+      "destination": {
+        "address": "Av. João Wallig, 1800 - Passo d'Areia, Porto Alegre - RS, 91349-900"
+      },
+      "intermediates": [
+        {
+          "address": "Largo Vespasiano Júlio Veppo, 70 - Centro Histórico, Porto Alegre - RS, 90035-040"
+        },
+        {
+          "address": "Av. Assis Brasil, 164 - São João, Porto Alegre - RS, 91010-001"
+        },
+        {
+          "address": "Av. Ipiranga, 5200 - Jardim Botânico, Porto Alegre - RS, 90610-000"
+        }
+      ],
+      "travelMode": "DRIVE",
+      "optimizeWaypointOrder": true,
+      "languageCode": "pt-BR",
+      "regionCode": "BR",
+      "units": "METRIC",
+      "routingPreference": "TRAFFIC_UNAWARE"
+    },
+    "method": "POST"
+  }
+}
+================================================================================

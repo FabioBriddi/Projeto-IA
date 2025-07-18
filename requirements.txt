@@ -1,0 +1,19 @@
+# Core Framework
+Flask
+Werkzeug
+
+# Dados e ML
+pandas
+scikit-learn
+numpy
+
+# Visualização
+matplotlib
+seaborn
+
+# APIs e HTTP
+requests
+googlemaps
+
+# Configuração
+python-dotenv

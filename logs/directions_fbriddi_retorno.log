@@ -1,0 +1,89 @@
+{
+  "timestamp": "2025-07-18T18:55:50.815207",
+  "api": "directions",
+  "usuario": "fbriddi",
+  "tipo": "retorno",
+  "dados": {
+    "success": true,
+    "waypoint_order": [
+      0,
+      6,
+      7,
+      2,
+      4,
+      3,
+      1,
+      5
+    ],
+    "total_distance": 51293,
+    "total_duration": 6339,
+    "legs_count": 9
+  }
+}
+================================================================================
+{
+  "timestamp": "2025-07-18T19:26:35.308813",
+  "api": "directions",
+  "usuario": "fbriddi",
+  "tipo": "retorno",
+  "dados": {
+    "success": true,
+    "waypoint_order": [
+      4,
+      0,
+      6,
+      5,
+      8,
+      7,
+      1,
+      3,
+      2
+    ],
+    "total_distance": 42884,
+    "total_duration": 6813,
+    "legs_count": 10
+  }
+}
+================================================================================
+{
+  "timestamp": "2025-07-18T19:57:26.167326",
+  "api": "directions",
+  "usuario": "fbriddi",
+  "tipo": "retorno",
+  "dados": {
+    "success": true,
+    "waypoint_order": [
+      4,
+      0,
+      6,
+      5,
+      8,
+      7,
+      1,
+      3,
+      2
+    ],
+    "total_distance": 42884,
+    "total_duration": 6813,
+    "legs_count": 10
+  }
+}
+================================================================================
+{
+  "timestamp": "2025-07-18T19:57:58.363639",
+  "api": "directions",
+  "usuario": "fbriddi",
+  "tipo": "retorno",
+  "dados": {
+    "success": true,
+    "waypoint_order": [
+      0,
+      1,
+      2
+    ],
+    "total_distance": 39848,
+    "total_duration": 3710,
+    "legs_count": 4
+  }
+}
+================================================================================

@@ -1,0 +1,45 @@
+{
+  "timestamp": "2025-07-18T18:25:32.165308",
+  "api": "simulation",
+  "usuario": "fbriddi",
+  "tipo": "envio",
+  "dados": {
+    "origin": "Av. Plínio Kroeff, 1550 - Sarandi, Porto Alegre - RS, 91150-170",
+    "destination": "Av. Plínio Kroeff, 1550 - Sarandi, Porto Alegre - RS, 91150-170",
+    "waypoints_count": 9,
+    "optimize_waypoints": true,
+    "mode": "driving",
+    "api_type": "simulation"
+  }
+}
+================================================================================
+{
+  "timestamp": "2025-07-18T18:50:41.102075",
+  "api": "simulation",
+  "usuario": "fbriddi",
+  "tipo": "envio",
+  "dados": {
+    "origin": "Av. Plínio Kroeff, 1550 - Sarandi, Porto Alegre - RS, 91150-170",
+    "destination": "Av. Plínio Kroeff, 1550 - Sarandi, Porto Alegre - RS, 91150-170",
+    "waypoints_count": 10,
+    "optimize_waypoints": true,
+    "mode": "driving",
+    "api_type": "simulation"
+  }
+}
+================================================================================
+{
+  "timestamp": "2025-07-18T19:57:58.370306",
+  "api": "simulation",
+  "usuario": "fbriddi",
+  "tipo": "envio",
+  "dados": {
+    "origin": "Av. Plínio Kroeff, 1550 - Sarandi, Porto Alegre - RS, 91150-170",
+    "destination": "Av. João Wallig, 1800 - Passo d'Areia, Porto Alegre - RS, 91349-900",
+    "waypoints_count": 3,
+    "optimize_waypoints": true,
+    "mode": "driving",
+    "api_type": "simulation"
+  }
+}
+================================================================================

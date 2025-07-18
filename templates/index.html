@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title %}STRANS - Início{% endblock %}
+
+{% block content %}
+    <div class="menu-container">
+        <div class="menu-principal">
+            <a href="/dados/clientes" class="btn">Clientes</a>
+            <a href="/dados/veiculos" class="btn">Veículos</a>
+            <a href="/dados/rotas" class="btn">Rotas</a>
+            <a href="/dados/entregas" class="btn">Entregas</a>
+            <a href="{{ url_for('coletas') }}" class="btn">Coletas</a>
+            <a href="{{ url_for('roteiro') }}" class="btn">Roteiros</a>
+        </div>
+    </div>
+{% endblock %}

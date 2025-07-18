@@ -1,0 +1,17 @@
+# Arquivos de ambiente virtual
+venv/
+
+# Arquivos de cache do Python
+__pycache__/
+
+# Arquivos de ambiente com chaves secretas
+.env
+
+# Arquivos de auditoria gerados pela aplicação
+datasets/strans_maps_envio.txt
+datasets/strans_coletas_envio.txt
+datasets/strans_coletas_retorno.txt
+datasets/strans_roteiro.csv
+
+# Arquivos de sistema (opcional, mas recomendado)
+.DS_Store

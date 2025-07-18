@@ -1,0 +1,42 @@
+{
+  "timestamp": "2025-07-18T19:57:57.865259",
+  "api": "routes",
+  "usuario": "fbriddi",
+  "tipo": "retorno",
+  "dados": {
+    "status_code": 200,
+    "response_data": {
+      "routes": [
+        {
+          "legs": [
+            {
+              "distanceMeters": 18775,
+              "duration": "1098s"
+            },
+            {
+              "distanceMeters": 6429,
+              "duration": "676s"
+            },
+            {
+              "distanceMeters": 8578,
+              "duration": "1033s"
+            },
+            {
+              "distanceMeters": 6069,
+              "duration": "901s"
+            }
+          ],
+          "distanceMeters": 39851,
+          "duration": "3708s",
+          "optimizedIntermediateWaypointIndex": [
+            0,
+            1,
+            2
+          ]
+        }
+      ]
+    },
+    "success": true
+  }
+}
+================================================================================

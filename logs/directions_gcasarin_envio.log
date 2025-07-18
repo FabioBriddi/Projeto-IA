@@ -1,0 +1,30 @@
+{
+  "timestamp": "2025-07-18T19:45:55.730106",
+  "api": "directions",
+  "usuario": "gcasarin",
+  "tipo": "envio",
+  "dados": {
+    "origin": "Av. Plínio Kroeff, 1550 - Sarandi, Porto Alegre - RS, 91150-170",
+    "destination": "Av. Plínio Kroeff, 1550 - Sarandi, Porto Alegre - RS, 91150-170",
+    "waypoints_count": 23,
+    "optimize_waypoints": true,
+    "mode": "driving",
+    "api_type": "googlemaps_client"
+  }
+}
+================================================================================
+{
+  "timestamp": "2025-07-18T19:58:52.614863",
+  "api": "directions",
+  "usuario": "gcasarin",
+  "tipo": "envio",
+  "dados": {
+    "origin": "Av. Plínio Kroeff, 1550 - Sarandi, Porto Alegre - RS, 91150-170",
+    "destination": "Av. Plínio Kroeff, 1550 - Sarandi, Porto Alegre - RS, 91150-170",
+    "waypoints_count": 9,
+    "optimize_waypoints": true,
+    "mode": "driving",
+    "api_type": "googlemaps_client"
+  }
+}
+================================================================================

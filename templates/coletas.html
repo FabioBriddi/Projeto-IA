@@ -1,0 +1,141 @@
+{% extends 'base.html' %}
+
+{% block title %}STRANS - {{ titulo }}{% endblock %}
+
+{% block content %}
+    <div class="titulo-header">
+        <h1>{{ titulo }}</h1>
+        <div class="botoes-cabecalho">
+            <button id="btnGerarRoteiro" class="btn-acao-coleta" disabled>Gerar Roteiro Coleta</button>
+            <a href="/" class="btn-voltar-topo">Voltar</a>
+        </div>
+    </div>
+
+    <div class="filtro-container">
+        <input type="text" id="filtroInput" onkeyup="filtrarTabela()" placeholder="Digite para filtrar qualquer coluna...">
+    </div>
+    
+    <div class="tabela-container">
+        <table id="tabelaDados" class="tabela-dados">
+            <thead>
+                <tr>
+                    <th><input type="checkbox" id="selecionarTodos" title="Selecionar Todos"></th>
+                    {% for header in headers %}
+                        <th>{{ header.replace('_', ' ') | title }}</th>
+                    {% endfor %}
+                </tr>
+            </thead>
+            <tbody>
+                {% for coleta in coletas %}
+                <tr>
+                    <td class="coluna-selecao">
+                        {% if coleta.ID_Coleta in ['CO000', 'CO999'] %}
+                            <input type="checkbox" class="selecionar-item special-item" value="{{ coleta.ID_Coleta }}" disabled>
+                        {% else %}
+                            <input type="checkbox" class="selecionar-item" value="{{ coleta.ID_Coleta }}">
+                        {% endif %}
+                    </td>
+                    {% for key, value in coleta.items() %}
+                        <td>{{ value }}</td>
+                    {% endfor %}
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Rodapé apenas com o contador -->
+    <div class="rodape-resumo">
+        <span>Selecionados: <strong id="contadorSelecionados">0</strong></span>
+    </div>
+
+    <script>
+        // Lógica do filtro (sem alterações)
+        function filtrarTabela() {
+            const input = document.getElementById("filtroInput");
+            const filter = input.value.toUpperCase();
+            const tabela = document.getElementById("tabelaDados");
+            const tr = tabela.getElementsByTagName("tbody")[0].getElementsByTagName("tr");
+
+            for (let i = 0; i < tr.length; i++) {
+                let linhaVisivel = false;
+                const tds = tr[i].getElementsByTagName("td");
+                for (let j = 1; j < tds.length; j++) {
+                    if (tds[j]) {
+                        if ((tds[j].textContent || tds[j].innerText).toUpperCase().indexOf(filter) > -1) {
+                            linhaVisivel = true;
+                            break; 
+                        }
+                    }
+                }
+                tr[i].style.display = linhaVisivel ? "" : "none";
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const selecionarTodos = document.getElementById('selecionarTodos');
+            const btnGerarRoteiro = document.getElementById('btnGerarRoteiro');
+            const specialCheckboxes = document.querySelectorAll('.special-item');
+            const regularCheckboxes = document.querySelectorAll('.selecionar-item:not(.special-item)');
+            const contadorSelecionadosEl = document.getElementById('contadorSelecionados');
+
+            function updateState() {
+                const regularCheckedItems = Array.from(regularCheckboxes).filter(cb => cb.checked);
+                const regularCheckedCount = regularCheckedItems.length;
+                const anyRegularChecked = regularCheckedCount > 0;
+
+                contadorSelecionadosEl.textContent = regularCheckedCount;
+                btnGerarRoteiro.disabled = !anyRegularChecked;
+
+                specialCheckboxes.forEach(specialCheckbox => {
+                    specialCheckbox.checked = anyRegularChecked;
+                });
+
+                selecionarTodos.checked = regularCheckboxes.length > 0 && regularCheckedCount === regularCheckboxes.length;
+            }
+
+            selecionarTodos.addEventListener('change', () => {
+                regularCheckboxes.forEach(item => { item.checked = selecionarTodos.checked; });
+                updateState();
+            });
+
+            regularCheckboxes.forEach(item => {
+                item.addEventListener('change', updateState);
+            });
+
+            updateState();
+
+            btnGerarRoteiro.addEventListener('click', function() {
+                const selectedIds = [];
+                document.querySelectorAll('.selecionar-item:not(.special-item):checked').forEach(cb => {
+                    selectedIds.push(cb.value);
+                });
+
+                this.textContent = 'Processando...';
+                this.disabled = true;
+
+                fetch("{{ url_for('gerar_roteiro') }}", {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ ids: selectedIds }),
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        window.location.href = data.redirect_url;
+                    } else {
+                        alert('Erro ao gerar roteiro: ' + data.message);
+                        this.textContent = 'Gerar Roteiro Coleta';
+                        updateState(); // Reabilita o botão se houver seleção
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert('Ocorreu um erro de comunicação com o servidor.');
+                    this.textContent = 'Gerar Roteiro Coleta';
+                    updateState();
+                });
+            });
+        });
+    </script>
+{% endblock %}

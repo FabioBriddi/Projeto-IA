@@ -1,0 +1,64 @@
+{
+  "timestamp": "2025-07-18T19:32:13.572730",
+  "api": "simulation",
+  "usuario": "operador",
+  "tipo": "retorno",
+  "dados": {
+    "success": true,
+    "optimized_order": [
+      8,
+      0,
+      2,
+      7,
+      4,
+      6,
+      1,
+      5,
+      3
+    ],
+    "total_distance_meters": 15676,
+    "total_duration_seconds": 2233,
+    "legs_count": 10,
+    "optimization_applied": true
+  }
+}
+================================================================================
+{
+  "timestamp": "2025-07-18T19:44:25.157887",
+  "api": "simulation",
+  "usuario": "operador",
+  "tipo": "retorno",
+  "dados": {
+    "success": true,
+    "optimized_order": [
+      9,
+      12,
+      17,
+      22,
+      1,
+      3,
+      8,
+      18,
+      14,
+      10,
+      5,
+      16,
+      13,
+      7,
+      2,
+      6,
+      15,
+      11,
+      20,
+      0,
+      4,
+      21,
+      19
+    ],
+    "total_distance_meters": 34421,
+    "total_duration_seconds": 5243,
+    "legs_count": 24,
+    "optimization_applied": true
+  }
+}
+================================================================================

@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block title %}STRANS - Análise de Veículos{% endblock %}
+
+{% block content %}
+    <div class="titulo-header">
+        <h1>Análise de Entregas por Veículo</h1>
+        <a href="{{ url_for('mostrar_dados', tipo_dado='entregas') }}" class="btn-voltar-topo">Voltar para Entregas</a>
+    </div>
+
+    <div class="analise-container">
+        <h2>Análise Gráfica do Desempenho dos Veículos - 2024</h2>
+        
+        <div class="grafico-box">
+            <h3>Gráfico 1: Comparativo Anual</h3>
+            <p>Este gráfico mostra a soma total de entregas realizadas por cada tipo de veículo durante o ano de 2024.</p>
+            <img src="{{ graficos.anual }}?t={{ range(1, 1000) | random }}" alt="Gráfico de Comparativo Anual por Veículo">
+        </div>
+
+        <hr class="divisor">
+        
+        <div class="grafico-box">
+            <h3>Gráfico 2: Evolução Mensal</h3>
+            <p>Acompanhe a evolução do número de entregas de cada tipo de veículo, mês a mês, ao longo de 2024.</p>
+            <img src="{{ graficos.mensal }}?t={{ range(1, 1000) | random }}" alt="Gráfico de Evolução Mensal por Veículo">
+        </div>
+
+        <hr class="divisor">
+
+        <div class="grafico-box">
+            <h3>Gráfico 3: Previsão de Tendência (Machine Learning / Regressão Linear)</h3>
+            <p>
+                Utilizando um modelo de Regressão Linear, analisamos os dados de 2024 para projetar a tendência de desempenho para cada tipo de veículo.
+                As linhas representam a tendência geral, ajudando a visualizar a direção do crescimento para cada modal.
+            </p>
+            <img src="{{ graficos.previsao }}?t={{ range(1, 1000) | random }}" alt="Gráfico de Previsão de Tendência por Veículo">
+        </div>
+    </div>
+{% endblock %}

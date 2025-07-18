@@ -1,0 +1,30 @@
+{
+  "timestamp": "2025-07-18T19:32:13.570470",
+  "api": "simulation",
+  "usuario": "operador",
+  "tipo": "envio",
+  "dados": {
+    "origin": "Av. Plínio Kroeff, 1550 - Sarandi, Porto Alegre - RS, 91150-170",
+    "destination": "Av. Plínio Kroeff, 1550 - Sarandi, Porto Alegre - RS, 91150-170",
+    "waypoints_count": 9,
+    "optimize_waypoints": true,
+    "mode": "driving",
+    "api_type": "simulation"
+  }
+}
+================================================================================
+{
+  "timestamp": "2025-07-18T19:44:25.143352",
+  "api": "simulation",
+  "usuario": "operador",
+  "tipo": "envio",
+  "dados": {
+    "origin": "Av. Plínio Kroeff, 1550 - Sarandi, Porto Alegre - RS, 91150-170",
+    "destination": "Av. Plínio Kroeff, 1550 - Sarandi, Porto Alegre - RS, 91150-170",
+    "waypoints_count": 23,
+    "optimize_waypoints": true,
+    "mode": "driving",
+    "api_type": "simulation"
+  }
+}
+================================================================================

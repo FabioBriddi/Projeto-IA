@@ -1,0 +1,38 @@
+ID_Coleta;ID_Cliente;Status;Nome;Endereco_Coleta;volume;Data_Solicitacao
+CO000;0;Em Rota;Itaipu Logística - Expedição;Av. Plínio Kroeff, 1550 - Sarandi, Porto Alegre - RS, 91150-170;0;13/07/2025
+CO002;1001;Aguardando;Estação Rodoviária de Porto Alegre;Largo Vespasiano Júlio Veppo, 70 - Centro Histórico, Porto Alegre - RS, 90035-040;1;13/07/2025
+CO003;1002;Aguardando;Bourbon Assis Brasil;Av. Assis Brasil, 164 - São João, Porto Alegre - RS, 91010-001;2;13/07/2025
+CO004;1003;Aguardando;Bourbon Shopping Ipiranga;Av. Ipiranga, 5200 - Jardim Botânico, Porto Alegre - RS, 90610-000;2;13/07/2025
+CO005;1004;Aguardando;Shopping Iguatemi Porto Alegre;Av. João Wallig, 1800 - Passo d'Areia, Porto Alegre - RS, 91349-900;1;13/07/2025
+CO006;1005;Aguardando;Bourbon Shopping Country;Av. Túlio de Rose, 80 - Passo d'Areia, Porto Alegre - RS, 91340-110;2;13/07/2025
+CO007;1006;Aguardando;Lindóia Shopping;Av. Assis Brasil, 3522 - Jardim Lindóia, Porto Alegre - RS, 91010-007;1;13/07/2025
+CO008;1007;Aguardando;Shopping Total;Av. Cristóvão Colombo, 545 - prédio 7 - Independência, Porto Alegre - RS, 90035-153;4;13/07/2025
+CO009;1008;Aguardando;Moinhos Shopping;R. Olávo Barreto Viana, 36 - Moinhos de Vento, Porto Alegre - RS, 90570-070;2;13/07/2025
+CO010;1009;Aguardando;Shopping João Pessoa;Av. João Pessoa, 1831 - Farroupilha, Porto Alegre - RS, 90040-001;3;13/07/2025
+CO011;1010;Aguardando;Shopping Praia de Belas;Av. Praia de Belas, 1181 - Praia de Belas, Porto Alegre - RS, 90110-001;2;13/07/2025
+CO012;1011;Aguardando;Barra Shopping Sul;Av. Diário de Notícias, 300 - Cristal, Porto Alegre - RS, 90810-080;6;13/07/2025
+CO013;1012;Aguardando;Pontifícia Universidade Católica do Rio Grande do Sul;Av. Ipiranga, 6681 - Partenon, Porto Alegre - RS, 90619-900;1;13/07/2025
+CO014;1013;Aguardando;UniSenac - Campus Porto Alegre I;R. Cel. Genuíno, 130 - Centro Histórico, Porto Alegre - RS, 90010-350;1;13/07/2025
+CO015;1014;Aguardando;UniSenac - Campus Porto Alegre II;R. Cel. Genuíno, 358 - Centro Histórico, Porto Alegre - RS, 90010-350;1;13/07/2025
+CO016;1015;Aguardando;UniRitter - Campus FAPA;Av. Manoel Elias, 2001 - Passo das Pedras, Porto Alegre - RS, 91240-261;1;13/07/2025
+CO017;1016;Aguardando;UniRitter - Campus Zona Sul;Rua Orfanotrófio, 555, Alto - Teresópolis, Porto Alegre - RS, 90840-440;1;13/07/2025
+CO018;1017;Aguardando;Faculdade Dom Bosco;R. Mal. José Inácio da Silva, 355 - Passo d'Areia, Porto Alegre - RS, 90520-280;1;13/07/2025
+CO019;1018;Aguardando;Unisinos;Av. Dr. Nilo Peçanha, 1600 - Boa Vista, Porto Alegre - RS, 91330-002;1;13/07/2025
+CO020;1019;Aguardando;FADERGS;Galeria Luza - R. Mal. Floriano Peixoto, 185 - Centro Histórico, Porto Alegre - RS, 90020-171;1;13/07/2025
+CO021;1020;Aguardando;Unifin - Faculdade São Francisco de Assis;Av. Sertório 385 e, R. Comendador Taváres, 360 - Navegantes, Porto Alegre - RS, 91020-001;1;13/07/2025
+CO022;1021;Aguardando;UERGS - Universidade Estadual do Rio Grande do Sul;Rua Washington Luiz, 675 - Centro Histórico, Porto Alegre - RS, 90010-460;1;13/07/2025
+CO023;1022;Aguardando;Panvel Farmácias;Avenida Severo Dullius, 90010 - T1, 2.057 - Anchieta, Porto Alegre - RS, 90200-310;1;13/07/2025
+CO024;1023;Aguardando;Panvel Farmácias;Endereço: Av. Assis Brasil, 164 - Loja 61 - Passo d'Areia, Porto Alegre - RS, 91010-000;1;13/07/2025
+CO025;1024;Aguardando;Panvel Farmácias;Embarque doméstico - Av. Severo Dullius, 90010 - LUC T1N2046 Piso 2 - Anchieta, Porto Alegre - RS, 90200-910;1;13/07/2025
+CO026;1025;Aguardando;Panvel Farmácias;Av. Cristóvão Colombo, 2110 - Floresta, Porto Alegre - RS, 90560-002;1;13/07/2025
+CO027;1026;Aguardando;Panvel Farmácias;Av. Plínio Brasil Milano, 1689 - Loja 101 - Higienópolis, Porto Alegre - RS, 90520-002;1;13/07/2025
+CO028;1027;Aguardando;Farmácias São João;Av. A. J. Renner, 1221 - Humaitá, Porto Alegre - RS, 90250-000;1;13/07/2025
+CO029;1028;Aguardando;Farmácias São João;Av. Benjamin Constant, 1850 - São João, Porto Alegre - RS, 90550-002;1;13/07/2025
+CO030;1029;Aguardando;Farmácias São João;Av. Assis Brasil, 3277 - Cristo Redentor, Porto Alegre - RS, 91010-007;1;13/07/2025
+CO031;1030;Aguardando;Farmácias São João;Av. Ceará, 391 - Centro, Porto Alegre - RS, 90240-510;1;13/07/2025
+CO032;1031;Aguardando;Droga Raia São João;Av. Cristóvão Colombo, 2614 - São João, Porto Alegre - RS, 90560-002;1;13/07/2025
+CO033;1032;Aguardando;Droga Raia;Av. Cristóvão Colombo, 2125 - Moinhos de Vento, Porto Alegre - RS, 90560-005;1;13/07/2025
+CO034;1033;Aguardando;Droga Raia;Av. Cristóvão Colombo, 3701 - Floresta, Porto Alegre - RS, 90560-005;1;13/07/2025
+CO035;1034;Aguardando;Droga Raia;R. Dr. Florêncio Ygartua, 118 - Moinhos de Vento, Porto Alegre - RS, 90430-010;1;13/07/2025
+CO036;1035;Aguardando;Droga Raia;Adda Mascarenhas de Moraes, 85 - Jardim Itu, Porto Alegre - RS, 91220-140;1;13/07/2025
+CO999;0;Em Rota;Itaipu Logística - Recepção;Av. Plínio Kroeff, 1550 - Sarandi, Porto Alegre - RS, 91150-170;0;13/07/2025

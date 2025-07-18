@@ -1,0 +1,429 @@
+{% extends 'base.html' %}
+
+{% block title %}STRANS - {{ titulo }}{% endblock %}
+
+{% block content %}
+    <div class="titulo-header">
+        <div class="titulo-info">
+            <h1>{{ titulo }}</h1>
+            <div class="metricas-container">
+                {% if metricas %}
+                <div class="metricas-rota">
+                    <span class="badge-metricas">{{ metricas }}</span>
+                </div>
+                {% endif %}
+                {% if Maps_urls and Maps_urls|length > 1 %}
+                <div class="alerta-multiplas-rotas">
+                    <span class="badge-alerta">
+                        <i class="fas fa-info-circle"></i>
+                        Roteiro dividido em {{ Maps_urls|length }} partes
+                    </span>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+        
+        <div class="botoes-cabecalho">
+            {% if Maps_urls %}
+                {% for url in Maps_urls %}
+                    <a href="{{ url }}" target="_blank" class="btn-analise">
+                        <i class="fab fa-google"></i> Rota - Parte {{ loop.index }}
+                    </a>
+                {% endfor %}
+            {% endif %}
+            
+            {% if session.has_api_key %}
+            <button id="btnCompararApis" class="btn-analise">
+                <i class="fas fa-chart-line"></i> Comparar APIs
+            </button>
+            {% endif %}
+            
+            <a href="{{ url_for('coletas') }}" class="btn-voltar-topo">Voltar</a>
+        </div>
+    </div>
+
+    <div class="filtro-container">
+        <input type="text" id="filtroInput" onkeyup="filtrarTabela()" placeholder="Digite para filtrar qualquer coluna...">
+    </div>
+    
+    <div class="tabela-container">
+        {% if roteiro %}
+        <table id="tabelaDados" class="tabela-dados">
+            <thead>
+                <tr>
+                    <th>Ordem</th>
+                    <th>ID</th>
+                    <th>Nome</th>
+                    <th>Endereço</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for parada in roteiro %}
+                <tr>
+                    <td>{{ parada.ordem }}</td>
+                    <td>{{ parada.id }}</td>
+                    <td>{{ parada.nome }}</td>
+                    <td>{{ parada.endereco }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% else %}
+        <div class="alerta-info">
+            <p><i class="fas fa-info-circle"></i> Nenhum roteiro foi gerado ainda.</p>
+            <p>Vá para a página de <a href="{{ url_for('coletas') }}">Coletas</a>, selecione os pontos e clique em "Gerar Roteiro Coleta".</p>
+        </div>
+        {% endif %}
+    </div>
+
+    <a href="{{ url_for('coletas') }}" class="link-voltar">‹ Voltar ao Menu</a>
+
+    <!-- Popup para comparação de APIs -->
+    <div id="popup-comparacao-apis" class="popup-overlay" style="display: none;">
+        <div class="popup-content popup-comparacao">
+            <span class="popup-close" onclick="document.getElementById('popup-comparacao-apis').style.display='none'">&times;</span>
+            <div class="popup-icon">
+                <i class="fas fa-chart-line"></i>
+            </div>
+            <h3>Comparação de APIs</h3>
+            <div id="comparacao-resultados">
+                <div class="loading-spinner">
+                    <i class="fas fa-spinner fa-spin"></i>
+                    <p>Comparando APIs...</p>
+                </div>
+            </div>
+            <button class="button" onclick="document.getElementById('popup-comparacao-apis').style.display='none'">Fechar</button>
+        </div>
+    </div>
+
+    <script>
+        // Função de filtro idêntica às outras telas
+        function filtrarTabela() {
+            const input = document.getElementById("filtroInput");
+            const filter = input.value.toUpperCase();
+            const tabela = document.getElementById("tabelaDados");
+            const tr = tabela.getElementsByTagName("tbody")[0].getElementsByTagName("tr");
+
+            for (let i = 0; i < tr.length; i++) {
+                let linhaVisivel = false;
+                const tds = tr[i].getElementsByTagName("td");
+                for (let j = 0; j < tds.length; j++) {
+                    if (tds[j]) {
+                        if ((tds[j].textContent || tds[j].innerText).toUpperCase().indexOf(filter) > -1) {
+                            linhaVisivel = true;
+                            break; 
+                        }
+                    }
+                }
+                tr[i].style.display = linhaVisivel ? "" : "none";
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            // Funcionalidade de comparação de APIs
+            const btnCompararApis = document.getElementById('btnCompararApis');
+            if (btnCompararApis) {
+                btnCompararApis.addEventListener('click', function() {
+                    const popup = document.getElementById('popup-comparacao-apis');
+                    const resultados = document.getElementById('comparacao-resultados');
+                    
+                    popup.style.display = 'flex';
+                    resultados.innerHTML = `
+                        <div class="loading-spinner">
+                            <i class="fas fa-spinner fa-spin"></i>
+                            <p>Comparando APIs...</p>
+                        </div>
+                    `;
+                    
+                    fetch('/comparar_apis')
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.success) {
+                                let html = '<div class="api-comparison-grid">';
+                                
+                                for (const [apiName, result] of Object.entries(data.comparison)) {
+                                    const apiDisplayName = apiName === 'routes' ? 'Routes API (Nova)' : 
+                                                          apiName === 'directions' ? 'Directions API (Legacy)' : 
+                                                          'Simulação';
+                                    
+                                    html += `
+                                        <div class="api-result-card ${apiName}">
+                                            <h4>${apiDisplayName}</h4>
+                                            <div class="metrics">
+                                                <div class="metric">
+                                                    <span class="label">📏 Distância:</span>
+                                                    <span class="value">${result.distance_km ? result.distance_km.toFixed(1) + ' km' : 'N/A'}</span>
+                                                </div>
+                                                <div class="metric">
+                                                    <span class="label">⏱️ Tempo:</span>
+                                                    <span class="value">${result.duration_min ? Math.round(result.duration_min) + ' min' : 'N/A'}</span>
+                                                </div>
+                                                <div class="metric">
+                                                    <span class="label">🎯 Ordem:</span>
+                                                    <span class="value">${result.waypoint_order ? '[' + result.waypoint_order.join(', ') + ']' : 'N/A'}</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    `;
+                                }
+                                
+                                html += '</div>';
+                                resultados.innerHTML = html;
+                            } else {
+                                resultados.innerHTML = `
+                                    <div class="error-message">
+                                        <i class="fas fa-exclamation-triangle"></i>
+                                        <p>Erro ao comparar APIs: ${data.message}</p>
+                                    </div>
+                                `;
+                            }
+                        })
+                        .catch(error => {
+                            console.error('Erro:', error);
+                            resultados.innerHTML = `
+                                <div class="error-message">
+                                    <i class="fas fa-exclamation-triangle"></i>
+                                    <p>Erro de comunicação com o servidor.</p>
+                                </div>
+                            `;
+                        });
+                });
+            }
+        });
+    </script>
+
+    <style>
+        /* Estilos específicos para métricas e alertas */
+        .titulo-info {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .titulo-info h1 {
+            margin-bottom: 0;
+        }
+
+        .metricas-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .metricas-rota {
+            display: flex;
+            gap: 10px;
+        }
+
+        .badge-metricas {
+            background-color: #28a745;
+            color: white;
+            padding: 6px 12px;
+            border-radius: 15px;
+            font-size: 0.9em;
+            font-weight: 500;
+        }
+
+        .alerta-multiplas-rotas {
+            display: flex;
+            gap: 10px;
+        }
+
+        .badge-alerta {
+            background-color: #17a2b8;
+            color: white;
+            padding: 6px 12px;
+            border-radius: 15px;
+            font-size: 0.9em;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        /* Estilos para os popups */
+        .popup-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1050;
+            backdrop-filter: blur(5px);
+        }
+
+        .popup-content {
+            background-color: #fff;
+            padding: 30px 40px;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.25);
+            text-align: center;
+            position: relative;
+            max-width: 450px;
+            width: 90%;
+            transform: translateY(-50px);
+            opacity: 0;
+            animation: slide-in 0.3s forwards;
+        }
+
+        .popup-comparacao {
+            max-width: 800px;
+            width: 95%;
+        }
+
+        @keyframes slide-in {
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .popup-icon {
+            font-size: 48px;
+            color: var(--cor-primaria);
+            margin-bottom: 15px;
+        }
+
+        .popup-content h3 {
+            margin-top: 0;
+            color: #333;
+            font-size: 1.5em;
+        }
+
+        .popup-content p {
+            font-size: 1.1em;
+            color: #555;
+            line-height: 1.6;
+            margin-bottom: 25px;
+        }
+
+        .popup-content .button {
+            background-color: var(--cor-primaria);
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .popup-close {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            font-size: 28px;
+            color: #aaa;
+            cursor: pointer;
+            line-height: 1;
+        }
+
+        .popup-close:hover {
+            color: #333;
+        }
+
+        .loading-spinner {
+            text-align: center;
+            padding: 30px;
+        }
+
+        .loading-spinner i {
+            font-size: 2em;
+            color: var(--cor-primaria);
+            margin-bottom: 15px;
+        }
+
+        .api-comparison-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .api-result-card {
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            padding: 20px;
+            border-left: 4px solid #dee2e6;
+        }
+
+        .api-result-card.routes {
+            border-left-color: #28a745;
+        }
+
+        .api-result-card.directions {
+            border-left-color: #ffc107;
+        }
+
+        .api-result-card.simulation {
+            border-left-color: #6c757d;
+        }
+
+        .api-result-card h4 {
+            margin: 0 0 15px 0;
+            color: #333;
+            font-size: 1.1em;
+        }
+
+        .metrics {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .metric {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .metric .label {
+            font-weight: 500;
+            color: #555;
+        }
+
+        .metric .value {
+            font-weight: bold;
+            color: var(--cor-primaria);
+        }
+
+        .error-message {
+            text-align: center;
+            padding: 30px;
+            color: #dc3545;
+        }
+
+        .error-message i {
+            font-size: 2em;
+            margin-bottom: 15px;
+        }
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .titulo-header {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .botoes-cabecalho {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .metricas-container {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .api-comparison-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+{% endblock %}

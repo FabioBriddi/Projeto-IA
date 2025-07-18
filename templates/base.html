@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}STRANS{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <header class="header">
+        <div class="header-content">
+            <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Logo STRANS" class="logo">
+            <h1 class="site-title">SisLog - Sistema de Gestão de Logística</h1>
+        </div>
+        <div class="header-actions">
+            <!-- Exibe o nome do usuário e o botão Sair se estiver logado -->
+            {% if session.user_nome %}
+            <div class="user-info">
+                <span class="user-name">{{ session.user_nome }}</span>
+                <a href="{{ url_for('logout') }}" class="icon-btn btn-sair" title="Sair">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
+                </a>
+            </div>
+            {% endif %}
+        </div>
+    </header>
+
+    <main class="container">
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer class="footer">
+        <p>© 2025 STrans Logística Inteligente. Todos os direitos reservados.</p>
+        <p class="powered-by">Powered by Briddi & Casarin Software.</p>
+    </footer>
+
+</body>
+</html>

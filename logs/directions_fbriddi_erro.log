@@ -1,0 +1,22 @@
+{
+  "timestamp": "2025-07-18T18:25:32.163697",
+  "api": "directions",
+  "usuario": "fbriddi",
+  "tipo": "erro",
+  "dados": {
+    "error": "REQUEST_DENIED (You’re calling a legacy API, which is not enabled for your project. To get newer features and more functionality, switch to the Places API (New) or Routes API. Learn more: https://developers.google.com/maps/legacy#LegacyApiNotActivatedMapError)",
+    "error_type": "ApiError"
+  }
+}
+================================================================================
+{
+  "timestamp": "2025-07-18T18:50:41.100061",
+  "api": "directions",
+  "usuario": "fbriddi",
+  "tipo": "erro",
+  "dados": {
+    "error": "REQUEST_DENIED (You must enable Billing on the Google Cloud Project at https://console.cloud.google.com/project/_/billing/enable Learn more at https://developers.google.com/maps/gmp-get-started)",
+    "error_type": "ApiError"
+  }
+}
+================================================================================
