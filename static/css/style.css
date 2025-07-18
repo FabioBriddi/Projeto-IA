@@ -476,6 +476,35 @@ h1 {
     height: 18px;
 }
 
+<<<<<<< HEAD
+=======
+/* --- PÁGINA DE ROTEIRO --- */
+.alerta-info {
+    text-align: center;
+    padding: 40px 20px;
+    margin-top: 30px;
+    background-color: #e9ecef;
+    border-radius: 8px;
+    border: 1px solid #ced4da;
+}
+
+.alerta-info p {
+    margin: 10px 0;
+    font-size: 1.1em;
+    color: #495057;
+}
+
+.alerta-info a {
+    color: var(--cor-primaria);
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.alerta-info a:hover {
+    text-decoration: underline;
+}
+
+>>>>>>> f2955cf7c4561253a512eb8302b2a7d39e7ddd99
 /* --- CABEÇALHO DAS PÁGINAS INTERNAS --- */
 .titulo-header {
     display: flex;
@@ -823,6 +852,7 @@ h1 {
 .btn-login:hover {
     background-color: #0d2757;
 }
+<<<<<<< HEAD
 
 /* --- ESTILO PARA ALERTA DE ROTA DIVIDIDA --- */
 .alerta-aviso {
@@ -953,3 +983,5 @@ h1 {
 .popup-close:hover {
     color: #333;
 }
+=======
+>>>>>>> f2955cf7c4561253a512eb8302b2a7d39e7ddd99

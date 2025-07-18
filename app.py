@@ -1,4 +1,5 @@
 import os
+<<<<<<< HEAD
 import csv
 import urllib.parse
 import hashlib
@@ -8,6 +9,10 @@ import pandas as pd
 from dotenv import load_dotenv
 
 # Módulos de Análise
+=======
+from flask import Flask, render_template, abort, url_for, request, jsonify, redirect, session, flash
+import pandas as pd
+>>>>>>> f2955cf7c4561253a512eb8302b2a7d39e7ddd99
 import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
@@ -15,6 +20,7 @@ import seaborn as sns
 from sklearn.cluster import KMeans
 from sklearn.linear_model import LinearRegression
 import numpy as np
+<<<<<<< HEAD
 
 # Módulo de Rota
 from modules.Maps_route import route as optimize_route_api, compare_apis
@@ -27,6 +33,29 @@ app.secret_key = 'chave_secreta_para_sessoes_strans'
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 DATASET_PATH = os.path.join(BASE_DIR, 'datasets')
 
+=======
+import json
+import urllib.parse
+import hashlib
+from functools import wraps
+
+from dotenv import load_dotenv
+load_dotenv()
+
+from google_maps_route import route as optimize_route_api
+
+app = Flask(__name__)
+app.secret_key = 'chave_secreta_para_sessoes_strans' 
+
+# --- CAMINHO ATUALIZADO ---
+# Define o caminho base para a pasta de DataSets
+if os.path.exists("C:\\UniSenac-IA\\STRANS-Projeto-IA\\DataSets"):
+    DATASET_PATH = "C:\\UniSenac-IA\\STRANS-Projeto-IA\\DataSets"
+else:
+    base_dir = os.path.dirname(__file__)
+    DATASET_PATH = os.path.join(base_dir, 'datasets')
+    
+>>>>>>> f2955cf7c4561253a512eb8302b2a7d39e7ddd99
 MAPEAMENTO_DADOS = {
     'clientes': {'arquivo': 'strans_clientes.csv', 'titulo': 'Clientes'},
     'veiculos': {'arquivo': 'strans_veiculos.csv', 'titulo': 'Veículos'},
@@ -53,6 +82,10 @@ def login_required(f):
         return f(*args, **kwargs)
     return decorated_function
 
+<<<<<<< HEAD
+=======
+# --- ROTA DE LOGIN ---
+>>>>>>> f2955cf7c4561253a512eb8302b2a7d39e7ddd99
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
@@ -64,6 +97,7 @@ def login():
             df_users = ler_csv_limpo(caminho_users_csv, separador=';')
             user_data = df_users[df_users['login'] == login_user]
             if not user_data.empty and user_data.iloc[0]['password'] == senha_md5:
+<<<<<<< HEAD
                 # SESSÃO CORRIGIDA - ADICIONADOS user_login e user_profile
                 session['user_nome'] = user_data.iloc[0]['nome']
                 session['user_login'] = login_user
@@ -75,6 +109,10 @@ def login():
                 # DEBUG
                 print(f"✅ LOGIN: {login_user} - Perfil: {session['user_profile']} - API: {session['has_api_key']}")
                 
+=======
+                session['user_nome'] = user_data.iloc[0]['nome']
+                session['has_api_key'] = str(user_data.iloc[0]['api_key']).lower() == 'true'
+>>>>>>> f2955cf7c4561253a512eb8302b2a7d39e7ddd99
                 return redirect(url_for('index'))
             else:
                 flash('Login ou senha inválidos. Tente novamente.', 'error')
@@ -88,6 +126,10 @@ def logout():
     session.clear()
     return redirect(url_for('login'))
 
+<<<<<<< HEAD
+=======
+# --- ROTAS DA APLICAÇÃO ---
+>>>>>>> f2955cf7c4561253a512eb8302b2a7d39e7ddd99
 @app.route('/')
 @login_required
 def index():
@@ -123,6 +165,7 @@ def coletas():
 @app.route('/roteiro')
 @login_required
 def roteiro():
+<<<<<<< HEAD
     caminho_roteiro_csv = os.path.join(DATASET_PATH, 'strans_roteiro.csv')
     Maps_urls = []
     roteiro_otimizado = []
@@ -188,6 +231,32 @@ def roteiro():
                            Maps_urls=Maps_urls,
                            titulo=titulo_pagina,
                            metricas=metricas_texto)
+=======
+    caminho_arquivo_csv = os.path.join(DATASET_PATH, 'strans_roteiro.csv')
+    google_maps_url = None
+    tipo_roteiro = session.get('last_route_type', 'Gerado')
+    titulo = f"Roteiro {tipo_roteiro}"
+    try:
+        if not os.path.exists(caminho_arquivo_csv) or os.path.getsize(caminho_arquivo_csv) == 0:
+            return render_template('roteiro.html', titulo="Roteiro de Coleta", roteiro=None, headers=None, google_maps_url=None)
+        df = ler_csv_limpo(caminho_arquivo_csv, separador=';')
+        dados_roteiro = df.to_dict('records')
+        headers = df.columns.tolist()
+        if not df.empty and len(df) >= 2:
+            enderecos = df['endereco'].tolist()
+            origin = urllib.parse.quote_plus(enderecos[0])
+            destination = urllib.parse.quote_plus(enderecos[-1])
+            waypoints = ""
+            if len(enderecos) > 2:
+                waypoints_list = [urllib.parse.quote_plus(addr) for addr in enderecos[1:-1]]
+                waypoints = "|".join(waypoints_list)
+            google_maps_url = f"https://www.google.com/maps/dir/?api=1&origin={origin}&destination={destination}&waypoints={waypoints}"
+            with open(os.path.join(DATASET_PATH, 'strans_maps_envio.txt'), 'w') as f:
+                f.write(google_maps_url)
+    except Exception as e:
+        abort(500, description=f"Ocorreu um erro ao processar o arquivo de roteiro: {e}")
+    return render_template('roteiro.html', titulo=titulo, headers=headers, roteiro=dados_roteiro, google_maps_url=google_maps_url)
+>>>>>>> f2955cf7c4561253a512eb8302b2a7d39e7ddd99
 
 @app.route('/gerar_roteiro', methods=['POST'])
 @login_required
@@ -198,10 +267,13 @@ def gerar_roteiro():
         if not selected_ids:
             return jsonify({'success': False, 'message': 'Nenhuma coleta selecionada.'}), 400
         
+<<<<<<< HEAD
         # VALIDAÇÃO DO LIMITE DE 23
         if len(selected_ids) > 23:
             return jsonify({'success': False, 'message': f'Máximo de 23 coletas permitido! Você selecionou {len(selected_ids)}.'}), 400
         
+=======
+>>>>>>> f2955cf7c4561253a512eb8302b2a7d39e7ddd99
         caminho_coletas_csv = os.path.join(DATASET_PATH, 'strans_coletas.csv')
         df_coletas = ler_csv_limpo(caminho_coletas_csv, separador=';')
         
@@ -210,12 +282,17 @@ def gerar_roteiro():
         waypoints_df = df_coletas[df_coletas['ID_Coleta'].isin(selected_ids)]
 
         if start_point.empty or end_point.empty:
+<<<<<<< HEAD
                 return jsonify({'success': False, 'message': 'Ponto de partida (CO000) ou chegada (CO999) não encontrado.'}), 400
+=======
+             return jsonify({'success': False, 'message': 'Ponto de partida (CO000) ou chegada (CO999) não encontrado.'}), 400
+>>>>>>> f2955cf7c4561253a512eb8302b2a7d39e7ddd99
 
         origin_address = start_point.iloc[0]['Endereco_Coleta']
         destination_address = end_point.iloc[0]['Endereco_Coleta']
         waypoints_addresses = waypoints_df['Endereco_Coleta'].tolist()
 
+<<<<<<< HEAD
         # NOVA LÓGICA COM PERFIL E FALLBACK PARA BILLING
         use_paid_api = session.get('has_api_key', False)
         user_profile = session.get('user_profile', 'operador')
@@ -250,11 +327,21 @@ def gerar_roteiro():
             print(f"➡️  DECISÃO: Simulação (perfil desconhecido)")
         
         # CHAMAR API COM NOVA INTERFACE
+=======
+        use_paid_api = session.get('has_api_key', False)
+        
+        if use_paid_api and os.getenv("GOOGLE_MAPS_API_KEY"):
+            session['last_route_type'] = 'Otimizado'
+        else:
+            session['last_route_type'] = 'Gerado'
+
+>>>>>>> f2955cf7c4561253a512eb8302b2a7d39e7ddd99
         optimized_route = optimize_route_api(
             origin=origin_address,
             destination=destination_address,
             waypoints=waypoints_addresses,
             optimize_waypoints=True,
+<<<<<<< HEAD
             has_api_key=use_paid_api,
             user_profile=user_profile.strip()
         )
@@ -293,11 +380,27 @@ def gerar_roteiro():
         df_roteiro.to_csv(caminho_roteiro_csv, index=False, sep=';', encoding='utf-8-sig')
         
         print(f"📊 RESULTADO: {session['last_api_used']} - {optimized_route.total_distance_meters/1000:.1f}km")
+=======
+            use_paid_api=use_paid_api
+        )
+        
+        final_route = []
+        final_route.append({'id': 'CO000', 'ordem': 0, 'nome': start_point.iloc[0]['Nome'], 'endereco': start_point.iloc[0]['Endereco_Coleta']})
+        for i, waypoint_index in enumerate(optimized_route.waypoint_order):
+            waypoint_info = waypoints_df.iloc[waypoint_index]
+            final_route.append({'id': waypoint_info['ID_Coleta'], 'ordem': i + 1, 'nome': waypoint_info['Nome'], 'endereco': waypoint_info['Endereco_Coleta']})
+        final_route.append({'id': 'CO999', 'ordem': len(final_route), 'nome': end_point.iloc[0]['Nome'], 'endereco': end_point.iloc[0]['Endereco_Coleta']})
+        
+        df_roteiro = pd.DataFrame(final_route)
+        caminho_roteiro_csv = os.path.join(DATASET_PATH, 'strans_roteiro.csv')
+        df_roteiro.to_csv(caminho_roteiro_csv, index=False, sep=';', encoding='latin-1')
+>>>>>>> f2955cf7c4561253a512eb8302b2a7d39e7ddd99
         
         return jsonify({'success': True, 'redirect_url': url_for('roteiro')})
 
     except Exception as e:
         print(f"ERRO ao gerar roteiro: {e}")
+<<<<<<< HEAD
         import traceback
         traceback.print_exc()
         return jsonify({'success': False, 'message': f'Erro interno do servidor: {str(e)}'}), 500
@@ -334,6 +437,11 @@ def comparar_apis():
         return jsonify({'success': False, 'message': f'Erro na comparação: {str(e)}'})
 
 # Rotas de análise (mantidas sem alterações)
+=======
+        return jsonify({'success': False, 'message': f'Erro interno do servidor: {e}'}), 500
+
+# --- ROTAS DE ANÁLISE ---
+>>>>>>> f2955cf7c4561253a512eb8302b2a7d39e7ddd99
 @app.route('/analise_clientes')
 @login_required
 def analise_clientes():
@@ -397,7 +505,11 @@ def analise_veiculos():
         plt.title('Evolução Mensal por Tipo de Veículo (2024)', fontsize=16); plt.xlabel('Mês'); plt.ylabel('Número de Entregas'); plt.xticks(range(1, 13)); plt.legend(); plt.grid(True); plt.savefig(os.path.join(caminho_base_graficos, 'grafico_veiculos_mensal.png'), bbox_inches='tight'); plt.close()
         plt.figure(figsize=(12, 7));
         for v, nome in zip(veiculos, veiculos_nomes):
+<<<<<<< HEAD
                 sns.regplot(x='mes', y=v, data=df_2024, ci=None, label=f'Tendência - {nome}', scatter_kws={'alpha':0.4})
+=======
+             sns.regplot(x='mes', y=v, data=df_2024, ci=None, label=f'Tendência - {nome}', scatter_kws={'alpha':0.4})
+>>>>>>> f2955cf7c4561253a512eb8302b2a7d39e7ddd99
         plt.title('Previsão de Tendência por Veículo (Machine Learning)', fontsize=16); plt.xlabel('Mês (1-12: 2024)'); plt.ylabel('Número de Entregas'); plt.legend(); plt.grid(True); plt.savefig(os.path.join(caminho_base_graficos, 'grafico_veiculos_previsao.png'), bbox_inches='tight'); plt.close()
         urls_graficos = { 'anual': url_for('static', filename='analise/grafico_veiculos_anual.png'), 'mensal': url_for('static', filename='analise/grafico_veiculos_mensal.png'), 'previsao': url_for('static', filename='analise/grafico_veiculos_previsao.png') }
     except Exception as e:
@@ -413,5 +525,11 @@ def pagina_nao_encontrada(e):
 def erro_interno(e):
     return f"<h1>500 - Erro Interno do Servidor</h1><p>{e.description}</p><a href='/'>Voltar</a>", 500
 
+<<<<<<< HEAD
 if __name__ == '__main__':
     app.run(debug=True)
+=======
+
+if __name__ == '__main__':
+    app.run(debug=True)
+>>>>>>> f2955cf7c4561253a512eb8302b2a7d39e7ddd99

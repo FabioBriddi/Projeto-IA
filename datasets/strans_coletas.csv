@@ -21,6 +21,7 @@ CO019;1018;Aguardando;Unisinos;Av. Dr. Nilo Peçanha, 1600 - Boa Vista, Porto Ale
 CO020;1019;Aguardando;FADERGS;Galeria Luza - R. Mal. Floriano Peixoto, 185 - Centro Histórico, Porto Alegre - RS, 90020-171;1;13/07/2025
 CO021;1020;Aguardando;Unifin - Faculdade São Francisco de Assis;Av. Sertório 385 e, R. Comendador Taváres, 360 - Navegantes, Porto Alegre - RS, 91020-001;1;13/07/2025
 CO022;1021;Aguardando;UERGS - Universidade Estadual do Rio Grande do Sul;Rua Washington Luiz, 675 - Centro Histórico, Porto Alegre - RS, 90010-460;1;13/07/2025
+<<<<<<< HEAD
 CO023;1022;Aguardando;Panvel Farmácias;Avenida Severo Dullius, 90010 - T1, 2.057 - Anchieta, Porto Alegre - RS, 90200-310;1;13/07/2025
 CO024;1023;Aguardando;Panvel Farmácias;Endereço: Av. Assis Brasil, 164 - Loja 61 - Passo d'Areia, Porto Alegre - RS, 91010-000;1;13/07/2025
 CO025;1024;Aguardando;Panvel Farmácias;Embarque doméstico - Av. Severo Dullius, 90010 - LUC T1N2046 Piso 2 - Anchieta, Porto Alegre - RS, 90200-910;1;13/07/2025
@@ -35,4 +36,6 @@ CO033;1032;Aguardando;Droga Raia;Av. Cristóvão Colombo, 2125 - Moinhos de Vento,
 CO034;1033;Aguardando;Droga Raia;Av. Cristóvão Colombo, 3701 - Floresta, Porto Alegre - RS, 90560-005;1;13/07/2025
 CO035;1034;Aguardando;Droga Raia;R. Dr. Florêncio Ygartua, 118 - Moinhos de Vento, Porto Alegre - RS, 90430-010;1;13/07/2025
 CO036;1035;Aguardando;Droga Raia;Adda Mascarenhas de Moraes, 85 - Jardim Itu, Porto Alegre - RS, 91220-140;1;13/07/2025
+=======
+>>>>>>> f2955cf7c4561253a512eb8302b2a7d39e7ddd99
 CO999;0;Em Rota;Itaipu Logística - Recepção;Av. Plínio Kroeff, 1550 - Sarandi, Porto Alegre - RS, 91150-170;0;13/07/2025

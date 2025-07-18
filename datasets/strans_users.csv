@@ -1,5 +1,13 @@
 login;password;nome;perfil;api_key
+<<<<<<< HEAD
 admin;c62d929e7b7e7b6165923a5dfc60cb56;Administrador do Sistema;Administrador;false
 operador;cd8342c9dc3a81ba128ae3a3185d1865;Operador;Operador;false
 fbriddi;42d8aa7cde9c78c4757862d84620c335;Fabio Briddi;Administrador;true
 gcasarin;97db1846570837fce6ff62a408f1c26a;Gustavo Casarin;operador;true
+=======
+admin;b1ef741bee14a29acbe5686f59b62569;Administrador do Sistema;Administrador;false
+operador;b1ef741bee14a29acbe5686f59b62569;Operador;Operador;false
+fbriddi;42d8aa7cde9c78c4757862d84620c335;Fabio Briddi;Administrador;true
+gcasarin;97db1846570837fce6ff62a408f1c26a;Gustavo Casarin;Administrador;false
+
+>>>>>>> f2955cf7c4561253a512eb8302b2a7d39e7ddd99

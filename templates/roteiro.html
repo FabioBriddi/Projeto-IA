@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 
+<<<<<<< HEAD
 {% block title %}STRANS - {{ titulo }}{% endblock %}
 
 {% block content %}
@@ -55,19 +56,50 @@
                     <th>ID</th>
                     <th>Nome</th>
                     <th>Endereço</th>
+=======
+{% block title %}STRANS - Roteiro de Coleta{% endblock %}
+
+{% block content %}
+    <div class="titulo-header">
+        <h1>{{ titulo }}</h1>
+        <div class="botoes-cabecalho">
+            <!-- Só aparece se a URL do Google Maps existir -->
+            {% if google_maps_url %}
+            <a href="{{ google_maps_url }}" target="_blank" class="btn-acao-coleta btn-google-maps">Ver no Google Maps</a>
+            {% endif %}
+            <a href="{{ url_for('coletas') }}" class="btn-voltar-topo">Voltar para Coletas</a>
+        </div>
+    </div>
+    
+    {% if roteiro %}
+    <div class="tabela-container">
+        <table id="tabelaDados" class="tabela-dados">
+            <thead>
+                <tr>
+                    {% for header in headers %}
+                        <th>{{ header.replace('_', ' ') | title }}</th>
+                    {% endfor %}
+>>>>>>> f2955cf7c4561253a512eb8302b2a7d39e7ddd99
                 </tr>
             </thead>
             <tbody>
                 {% for parada in roteiro %}
                 <tr>
+<<<<<<< HEAD
                     <td>{{ parada.ordem }}</td>
                     <td>{{ parada.id }}</td>
                     <td>{{ parada.nome }}</td>
                     <td>{{ parada.endereco }}</td>
+=======
+                    {% for key, value in parada.items() %}
+                        <td>{{ value }}</td>
+                    {% endfor %}
+>>>>>>> f2955cf7c4561253a512eb8302b2a7d39e7ddd99
                 </tr>
                 {% endfor %}
             </tbody>
         </table>
+<<<<<<< HEAD
         {% else %}
         <div class="alerta-info">
             <p><i class="fas fa-info-circle"></i> Nenhum roteiro foi gerado ainda.</p>
@@ -427,3 +459,14 @@
         }
     </style>
 {% endblock %}
+=======
+    </div>
+    {% else %}
+    <div class="alerta-info">
+        <p>Nenhum roteiro foi gerado ainda.</p>
+        <p>Vá para a tela de <a href="{{ url_for('coletas') }}">Coletas</a>, selecione os pontos desejados e clique em "Gerar Roteiro Coleta".</p>
+    </div>
+    {% endif %}
+
+{% endblock %}
+>>>>>>> f2955cf7c4561253a512eb8302b2a7d39e7ddd99
